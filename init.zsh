@@ -15,6 +15,21 @@ p6df::modules::cloudsmith::deps() {
 ######################################################################
 #<
 #
+# Function: p6df::modules::cloudsmith::external::brews()
+#
+#>
+######################################################################
+p6df::modules::cloudsmith::external::brews() {
+
+  brew tap cloudsmith-io/cloudsmith-cli
+  brew install cloudsmith-cli
+
+  p6_return_void
+}
+
+######################################################################
+#<
+#
 # Function: str str = p6df::modules::cloudsmith::prompt::line()
 #
 #  Returns:

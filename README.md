@@ -29,6 +29,7 @@
 ### p6df-cloudsmith/init.zsh
 
 - p6df::modules::cloudsmith::deps()
+- p6df::modules::cloudsmith::external::brews()
 - str str = p6df::modules::cloudsmith::prompt::line()
 
 ## Hierarchy

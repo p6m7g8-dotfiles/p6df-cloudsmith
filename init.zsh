@@ -20,7 +20,6 @@ p6df::modules::cloudsmith::deps() {
 #  Returns:
 #	str - str
 #
-#  Environment:	 PD_API_KEY
 #>
 ######################################################################
 p6df::modules::cloudsmith::prompt::line() {

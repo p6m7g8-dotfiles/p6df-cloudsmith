@@ -30,14 +30,14 @@ p6df::modules::cloudsmith::external::brews() {
 ######################################################################
 #<
 #
-# Function: str str = p6df::modules::cloudsmith::prompt::line()
+# Function: str str = p6df::modules::cloudsmith::prompt::mod()
 #
 #  Returns:
 #	str - str
 #
 #>
 ######################################################################
-p6df::modules::cloudsmith::prompt::line() {
+p6df::modules::cloudsmith::prompt::mod() {
 
   local str="cloudsmith:        pgollucci"
 

@@ -46,6 +46,12 @@ p6df::modules::cloudsmith::prompt::mod() {
     if ! p6_string_blank "$CLOUDSMITH_API_KEY"; then
       str=$(p6_string_append "$str" "api" " ")
     fi
+    if ! p6_string_blank "$NPM_AUTH_TOKEN"; then
+      str=$(p6_string_append "$str" "cs:npm" " ")
+    fi
+    if ! p6_string_blank "$BUNDLE_DL__CLOUDSMITH__IO"; then
+      str=$(p6_string_append "$str" "cs:rg" " ")
+    fi
   fi
 
   p6_return_str "$str"
@@ -65,12 +71,14 @@ p6df::modules::cloudsmith::prompt::mod() {
 ######################################################################
 p6df::modules::cloudsmith::profile::on() {
   local profile="$1"
-  local api_key="${2:-}"
+  local api_key="$2"
+  local entitlement_key="$3"
 
   p6_env_export "P6_DFZ_PROFILE_CLOUDSMITH" "$profile"
-  if ! p6_string_blank "$api_key"; then
-    p6_env_export "CLOUDSMITH_API_KEY" "$api_key"
-  fi
+  p6_env_export "CLOUDSMITH_API_KEY" "$api_key"
+
+  p6_env_export "NPM_AUTH_TOKEN" "$entitlement_key" # XXX: NOT NPM_TOKEN
+  p6_env_export "BUNDLE_DL__CLOUDSMITH__IO" "token:$entitlement_key"
 
   p6_return_void
 }
@@ -87,6 +95,8 @@ p6df::modules::cloudsmith::profile::off() {
 
   p6_env_export_un P6_DFZ_PROFILE_CLOUDSMITH
   p6_env_export_un CLOUDSMITH_API_KEY
+  p6_env_export_un NPM_AUTH_TOKEN
+  p6_env_export_un BUNDLE_DL__CLOUDSMITH__IO
 
   p6_return_void
 }

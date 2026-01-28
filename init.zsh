@@ -41,15 +41,15 @@ p6df::modules::cloudsmith::external::brews() {
 p6df::modules::cloudsmith::prompt::mod() {
 
   local str
-  if ! p6_string_blank "$P6_DFZ_PROFILE_CLOUDSMITH"; then
+  if p6_string_blank_NOT "$P6_DFZ_PROFILE_CLOUDSMITH"; then
     str="cloudsmith:\t  $P6_DFZ_PROFILE_CLOUDSMITH:"
-    if ! p6_string_blank "$CLOUDSMITH_API_KEY"; then
+    if p6_string_blank_NOT "$CLOUDSMITH_API_KEY"; then
       str=$(p6_string_append "$str" "api" " ")
     fi
-    if ! p6_string_blank "$NPM_AUTH_TOKEN"; then
+    if p6_string_blank_NOT "$NPM_AUTH_TOKEN"; then
       str=$(p6_string_append "$str" "cs:npm" " ")
     fi
-    if ! p6_string_blank "$BUNDLE_DL__CLOUDSMITH__IO"; then
+    if p6_string_blank_NOT "$BUNDLE_DL__CLOUDSMITH__IO"; then
       str=$(p6_string_append "$str" "cs:rg" " ")
     fi
   fi

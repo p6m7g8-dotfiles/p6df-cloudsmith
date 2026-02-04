@@ -35,7 +35,7 @@ p6df::modules::cloudsmith::external::brews() {
 #  Returns:
 #	str - str
 #
-#  Environment:	 CLOUDSMITH_API_KEY P6_DFZ_PROFILE_CLOUDSMITH
+#  Environment:	 BUNDLE_DL__CLOUDSMITH__IO CLOUDSMITH_API_KEY NPM_AUTH_TOKEN P6_DFZ_PROFILE_CLOUDSMITH
 #>
 ######################################################################
 p6df::modules::cloudsmith::prompt::mod() {
@@ -60,13 +60,14 @@ p6df::modules::cloudsmith::prompt::mod() {
 ######################################################################
 #<
 #
-# Function: p6df::modules::cloudsmith::profile::on(profile, [api_key=])
+# Function: p6df::modules::cloudsmith::profile::on(profile, api_key, entitlement_key)
 #
 #  Args:
 #	profile -
-#	OPTIONAL api_key - []
+#	api_key -
+#	entitlement_key -
 #
-#  Environment:	 CLOUDSMITH_API_KEY P6_DFZ_PROFILE_CLOUDSMITH
+#  Environment:	 BUNDLE_DL__CLOUDSMITH__IO CLOUDSMITH_API_KEY NPM_AUTH_TOKEN P6_DFZ_PROFILE_CLOUDSMITH
 #>
 ######################################################################
 p6df::modules::cloudsmith::profile::on() {
@@ -88,7 +89,7 @@ p6df::modules::cloudsmith::profile::on() {
 #
 # Function: p6df::modules::cloudsmith::profile::off()
 #
-#  Environment:	 CLOUDSMITH_API_KEY P6_DFZ_PROFILE_CLOUDSMITH
+#  Environment:	 BUNDLE_DL__CLOUDSMITH__IO CLOUDSMITH_API_KEY NPM_AUTH_TOKEN P6_DFZ_PROFILE_CLOUDSMITH
 #>
 ######################################################################
 p6df::modules::cloudsmith::profile::off() {

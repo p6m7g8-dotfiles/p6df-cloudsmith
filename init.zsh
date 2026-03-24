@@ -21,8 +21,8 @@ p6df::modules::cloudsmith::deps() {
 ######################################################################
 p6df::modules::cloudsmith::external::brews() {
 
-  brew tap cloudsmith-io/cloudsmith-cli
-  brew install cloudsmith-cli
+  p6df::core::homebrew::cmd::brew tap cloudsmith-io/cloudsmith-cli
+  p6df::core::homebrew::cmd::brew install cloudsmith-cli
 
   p6_return_void
 }

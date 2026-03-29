@@ -60,26 +60,22 @@ p6df::modules::cloudsmith::prompt::mod() {
 ######################################################################
 #<
 #
-# Function: p6df::modules::cloudsmith::profile::on(profile, api_key, entitlement_key)
+# Function: p6df::modules::cloudsmith::profile::on(profile, code)
 #
 #  Args:
 #	profile -
-#	api_key -
-#	entitlement_key -
+#	code - shell code block (export CLOUDSMITH_API_KEY=... CLOUDSMITH_ENTITLEMENT_TOKEN=...)
 #
-#  Environment:	 BUNDLE_DL__CLOUDSMITH__IO CLOUDSMITH_API_KEY NPM_AUTH_TOKEN P6_DFZ_PROFILE_CLOUDSMITH
+#  Environment:	 BUNDLE_DL__CLOUDSMITH__IO CLOUDSMITH_API_KEY CLOUDSMITH_ENTITLEMENT_TOKEN NPM_AUTH_TOKEN P6_DFZ_PROFILE_CLOUDSMITH
 #>
 ######################################################################
 p6df::modules::cloudsmith::profile::on() {
   local profile="$1"
-  local api_key="$2"
-  local entitlement_key="$3"
+  local code="$2"
+
+  p6_run_code "$code"
 
   p6_env_export "P6_DFZ_PROFILE_CLOUDSMITH" "$profile"
-  p6_env_export "CLOUDSMITH_API_KEY" "$api_key"
-
-  p6_env_export "NPM_AUTH_TOKEN" "$entitlement_key" # XXX: NOT NPM_TOKEN
-  p6_env_export "BUNDLE_DL__CLOUDSMITH__IO" "token:$entitlement_key"
 
   p6_return_void
 }
@@ -87,17 +83,19 @@ p6df::modules::cloudsmith::profile::on() {
 ######################################################################
 #<
 #
-# Function: p6df::modules::cloudsmith::profile::off()
+# Function: p6df::modules::cloudsmith::profile::off(code)
 #
-#  Environment:	 BUNDLE_DL__CLOUDSMITH__IO CLOUDSMITH_API_KEY NPM_AUTH_TOKEN P6_DFZ_PROFILE_CLOUDSMITH
+#  Args:
+#	code - shell code block previously passed to profile::on
+#
+#  Environment:	 BUNDLE_DL__CLOUDSMITH__IO CLOUDSMITH_API_KEY CLOUDSMITH_ENTITLEMENT_TOKEN NPM_AUTH_TOKEN P6_DFZ_PROFILE_CLOUDSMITH
 #>
 ######################################################################
 p6df::modules::cloudsmith::profile::off() {
+  local code="$1"
 
+  p6_env_unset_from_code "$code"
   p6_env_export_un P6_DFZ_PROFILE_CLOUDSMITH
-  p6_env_export_un CLOUDSMITH_API_KEY
-  p6_env_export_un NPM_AUTH_TOKEN
-  p6_env_export_un BUNDLE_DL__CLOUDSMITH__IO
 
   p6_return_void
 }

@@ -40,5 +40,5 @@ p6df::modules::cloudsmith::external::brews() {
 ######################################################################
 p6df::modules::cloudsmith::profile::mod() {
 
-  p6_return_words 'cloudsmith' '$CLOUDSMITH_API_KEY'
+  p6_return_words 'cloudsmith' "$"
 }

@@ -30,10 +30,10 @@ p6df::modules::cloudsmith::external::brews() {
 ######################################################################
 #<
 #
-# Function: words cloudsmith $CLOUDSMITH_API_KEY = p6df::modules::cloudsmith::profile::mod()
+# Function: words cloudsmith = p6df::modules::cloudsmith::profile::mod()
 #
 #  Returns:
-#	words - cloudsmith $CLOUDSMITH_API_KEY
+#	words - cloudsmith
 #
 #  Environment:	 CLOUDSMITH_API_KEY
 #>

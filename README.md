@@ -37,13 +37,7 @@ TODO: Add a short summary of this module.
 
 - `p6df::modules::cloudsmith::deps()`
 - `p6df::modules::cloudsmith::external::brews()`
-- `p6df::modules::cloudsmith::profile::off()`
-- `p6df::modules::cloudsmith::profile::on(profile, api_key, entitlement_key)`
-  - Args:
-    - profile -
-    - api_key -
-    - entitlement_key -
-- `str str = p6df::modules::cloudsmith::prompt::mod()`
+- `words cloudsmith = p6df::modules::cloudsmith::profile::mod()`
 
 ## Hierarchy
 
